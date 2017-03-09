@@ -1,0 +1,2 @@
+﻿start Chrome.exe --app={0}
+exit

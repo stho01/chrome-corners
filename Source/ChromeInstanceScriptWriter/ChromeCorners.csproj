@@ -7,8 +7,8 @@
     <ProjectGuid>{51600C08-3A3A-4BD8-8250-A58EF27426EB}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ChromeInstanceScriptWriter</RootNamespace>
-    <AssemblyName>ci</AssemblyName>
+    <RootNamespace>ChromeCorners</RootNamespace>
+    <AssemblyName>cc</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -58,6 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Argument.cs" />
     <Compile Include="ArgumentsKeys.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

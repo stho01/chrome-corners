@@ -60,10 +60,9 @@
   <ItemGroup>
     <Compile Include="Argument.cs" />
     <Compile Include="ArgumentsKeys.cs" />
+    <Compile Include="Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ScriptWriter.cs" />
-    <Compile Include="ShortCutWriter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -95,6 +94,16 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ChromeCorners.Core\ChromeCorners.Core.csproj">
+      <Project>{d9b0829c-f776-45ec-8bbb-ab1259a981ad}</Project>
+      <Name>ChromeCorners.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ChromeCorners\ChromeCorners.csproj">
+      <Project>{9488e323-c41e-48c9-b607-58bd1ce45be1}</Project>
+      <Name>ChromeCorners</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

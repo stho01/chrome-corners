@@ -10,12 +10,12 @@ namespace ChromeCorners.CLI
     class Program
     {
         public static readonly Dictionary<Argument, string> ArgumentMap = new Dictionary<Argument, string>();
-        
-        private static readonly List<Argument> LeagalArguments = new List<Argument>() {
-            Arguments.URL,
-            Arguments.NAME
-        };
+        private static readonly List<Argument> LeagalArguments = new List<Argument>() { Arguments.URL, Arguments.NAME };
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="args"></param>
         static void Main(string[] args)
         {
             if (args.Length == 0)
@@ -27,14 +27,13 @@ namespace ChromeCorners.CLI
             try
             {
                 ParseProgramArguments(args);
-
-                var filename        = ArgumentMap.ContainsKey(Arguments.NAME)  ? ArgumentMap[Arguments.NAME]   : null;
-                var url             = ArgumentMap.ContainsKey(Arguments.URL)   ? ArgumentMap[Arguments.URL]    : null;
-                var createdFile     = ScriptWriter.WriteScript(filename, url);
-                var shortCutPath    = Path.GetFullPath(createdFile);
-                var desktop         = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
-
-                ShortCutWriter.CreateShortcut(Path.GetFileNameWithoutExtension(createdFile), desktop, shortCutPath);
+                var filename    = ArgumentMap.ContainsKey(Arguments.NAME)   ? ArgumentMap[Arguments.NAME] : null;
+                var url         = ArgumentMap.ContainsKey(Arguments.URL)    ? ArgumentMap[Arguments.URL]  : null;
+                
+                ChromeCorners.Instance.Configure(new Configuration {
+                    Filename = filename,
+                    Url      = url
+                }).Create();
             }
             catch(Exception ex)
             {
@@ -42,6 +41,9 @@ namespace ChromeCorners.CLI
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         static void PrintHelpList()
         {
             Console.WriteLine();
@@ -56,6 +58,10 @@ namespace ChromeCorners.CLI
             Console.WriteLine();
         }
         
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="args"></param>
         static void ParseProgramArguments(string[] args)
         {
             foreach (var arg in args)

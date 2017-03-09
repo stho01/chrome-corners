@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26228.4
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChromeCorners", "ChromeInstanceScriptWriter\ChromeCorners.csproj", "{51600C08-3A3A-4BD8-8250-A58EF27426EB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChromeCorners.CLI", "ChromeCorners.CLI\ChromeCorners.CLI.csproj", "{51600C08-3A3A-4BD8-8250-A58EF27426EB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

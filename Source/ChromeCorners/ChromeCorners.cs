@@ -31,8 +31,8 @@ namespace ChromeCorners
         public IChromeCornerService Configure(IConfiguration config)
         {
             _config = new Configuration();
-            _config.Clone(config);
-
+            _config.ScriptWriter        = config.ScriptWriter       ?? new DefaultScriptWriter();
+            _config.ShortCutGenerator   = config.ShortCutGenerator  ?? new DefaultShortCutGenerator();
             return Instance;
         }
 

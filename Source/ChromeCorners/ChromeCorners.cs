@@ -39,9 +39,9 @@ namespace ChromeCorners
         /// <summary>
         /// 
         /// </summary>
-        public bool Create()
+        public bool Create(string filename, string url)
         {
-            var createdFile     = _config.ScriptWriter.WriteScript(_config.Filename, _config.Url);
+            var createdFile     = _config.ScriptWriter.WriteScript(filename, url);
             var shortCutPath    = Path.GetFullPath(createdFile);
             var desktop         = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
 

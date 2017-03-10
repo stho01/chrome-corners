@@ -7,6 +7,6 @@ namespace ChromeCorners.Core
     public interface IChromeCornerService
     {
         IChromeCornerService Configure(IConfiguration config);
-        bool Create();
+        bool Create(string filename, string url);
     }
 }

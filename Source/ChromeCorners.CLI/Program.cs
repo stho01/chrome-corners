@@ -30,10 +30,7 @@ namespace ChromeCorners.CLI
                 var filename    = ArgumentMap.ContainsKey(Arguments.NAME)   ? ArgumentMap[Arguments.NAME] : null;
                 var url         = ArgumentMap.ContainsKey(Arguments.URL)    ? ArgumentMap[Arguments.URL]  : null;
                 
-                ChromeCorners.Instance.Configure(new Configuration {
-                    Filename = filename,
-                    Url      = url
-                }).Create();
+                ChromeCorners.Instance.Create(filename, url);
             }
             catch(Exception ex)
             {

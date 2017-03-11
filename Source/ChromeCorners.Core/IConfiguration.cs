@@ -6,8 +6,9 @@ namespace ChromeCorners.Core
 {
     public interface IConfiguration
     {
-        IScriptWriter ScriptWriter { get; }
-        IShortCutGenerator ShortCutGenerator { get; }
-        IWebService WebService { get; }
+        IScriptWriter      ScriptWriter         { get; }
+        IShortCutGenerator ShortCutGenerator    { get; }
+        IWebService        WebService           { get; }
+        IIconDownloader    IconDownloader       { get; }
     }
 }

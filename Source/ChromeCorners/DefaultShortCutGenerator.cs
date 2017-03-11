@@ -10,15 +10,23 @@ namespace ChromeCorners
 {
     public class DefaultShortCutGenerator : IShortCutGenerator
     {
-        public void CreateShortcut(string shortcutName, string shortcutPath, string targetFileLocation)
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="shortcutName"></param>
+        /// <param name="shortcutPath"></param>
+        /// <param name="targetFileLocation"></param>
+        /// <param name="iconPath"></param>
+        public void CreateShortcut(string shortcutName, string shortcutPath, string targetFileLocation, string iconPath = null)
         {
-            string shortcutLocation = System.IO.Path.Combine(shortcutPath, shortcutName + ".lnk");
-            WshShell shell          = new WshShell();
-            IWshShortcut shortcut   = (IWshShortcut)shell.CreateShortcut(shortcutLocation);
-            shortcut.Description    = "My shortcut description";   // The description of the shortcut
-            shortcut.IconLocation   = @"c:\myicon.ico";           // The icon of the shortcut
-            shortcut.TargetPath     = targetFileLocation;           // The path of the file that will launch when the shortcut is run
-            shortcut.Save();                                    // Save the shortcut
+            var shortcutLocation    = System.IO.Path.Combine(shortcutPath, shortcutName + ".lnk");
+            var shell               = new WshShell();
+            var shortcut            = (IWshShortcut)shell.CreateShortcut(shortcutLocation);
+
+            shortcut.Description    = "My shortcut description";  // The description of the shortcut
+            shortcut.IconLocation   = iconPath;                   // The icon of the shortcut
+            shortcut.TargetPath     = targetFileLocation;         // The path of the file that will launch when the shortcut is run
+            shortcut.Save();                                      // Save the shortcut
         }
     }
 }

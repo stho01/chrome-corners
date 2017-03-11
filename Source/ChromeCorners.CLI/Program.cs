@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ChromeCorners.CLI
 {
-    class Program
+    internal class Program
     {
         public static readonly Dictionary<Argument, string> ArgumentMap = new Dictionary<Argument, string>();
         private static readonly List<Argument> LeagalArguments = new List<Argument>() { Arguments.URL, Arguments.NAME };
@@ -16,7 +16,7 @@ namespace ChromeCorners.CLI
         /// 
         /// </summary>
         /// <param name="args"></param>
-        static void Main(string[] args)
+        internal static void Main(string[] args)
         {
             if (args.Length == 0)
             {

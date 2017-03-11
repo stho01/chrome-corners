@@ -12,6 +12,7 @@ namespace ChromeCorners
         /// Returns the filename of the created file
         /// </summary>
         /// <param name="filename"></param>
+        /// <param name="url"></param>
         /// <returns></returns>
         public string WriteScript(string filename, string url)
         {

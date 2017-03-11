@@ -19,8 +19,6 @@ namespace ChromeCorners.CLI
         }
 
         public override string ToString()
-        {
-            return string.Format("\t{0, -10} - {1}", ArgumentKey, Description);
-        }
+            => $"\t{ArgumentKey,-10} - {Description}";
     }
 }

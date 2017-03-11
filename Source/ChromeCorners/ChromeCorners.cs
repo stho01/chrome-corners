@@ -21,7 +21,17 @@ namespace ChromeCorners
         /// <summary>
         /// 
         /// </summary>
-        private ChromeCorners() { }
+        private ChromeCorners()
+        {
+            // Defaults.
+            _config = new Configuration
+            {
+                ScriptWriter      = new DefaultScriptWriter(),
+                ShortCutGenerator = new DefaultShortCutGenerator(),
+                WebService        = new WebService.Service(),
+                IconDownloader    = new WebService.FaviconDownloader()
+            };
+        }
         
         /// <summary>
         /// 
@@ -30,10 +40,13 @@ namespace ChromeCorners
         /// <returns></returns>
         public IChromeCornerService Configure(IConfiguration config)
         {
-            _config = new Configuration();
-            _config.ScriptWriter        = config.ScriptWriter       ?? new DefaultScriptWriter();
-            _config.ShortCutGenerator   = config.ShortCutGenerator  ?? new DefaultShortCutGenerator();
-            _config.WebService          = config.WebService         ?? new WebService.Service();
+            _config = new Configuration
+            {
+                ScriptWriter      = config.ScriptWriter      ?? _config.ScriptWriter,
+                ShortCutGenerator = config.ShortCutGenerator ?? _config.ShortCutGenerator,
+                WebService        = config.WebService        ?? _config.WebService,
+                IconDownloader    = config.IconDownloader    ?? _config.IconDownloader
+            };
             return Instance;
         }
 
@@ -44,11 +57,31 @@ namespace ChromeCorners
         {
             var createdFile     = _config.ScriptWriter.WriteScript(filename, url);
             var shortCutPath    = Path.GetFullPath(createdFile);
-            var desktop         = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+            var desktopPath     = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+            var iconPath        = DownloadIcon(url);
 
-            _config.ShortCutGenerator.CreateShortcut(Path.GetFileNameWithoutExtension(createdFile), desktop, shortCutPath);
+            _config.ShortCutGenerator.CreateShortcut(
+                Path.GetFileNameWithoutExtension(createdFile),
+                desktopPath,
+                shortCutPath,
+                iconPath);
 
             return true;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns></returns>
+        private string DownloadIcon(string url)
+        {
+            var iconUrl         = _config.WebService.FindFaviconUrlFromWebsite(url);
+            var fileNameAndPath = Environment.CurrentDirectory + "/" + "icon.ico";
+
+            _config.IconDownloader.DownloadAndSaveIcon(iconUrl, fileNameAndPath);
+
+            return fileNameAndPath;
         }
     }
 }

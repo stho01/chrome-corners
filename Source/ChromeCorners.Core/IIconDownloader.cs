@@ -9,5 +9,7 @@ namespace ChromeCorners.Core
     public interface IIconDownloader
     {
         byte[] DownloadIcon(string url);
+        void DownloadAndSaveIcon(string url, string filename);
+        void SaveIcon(byte[] data, string filename);
     }
 }

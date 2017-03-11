@@ -33,6 +33,7 @@ namespace ChromeCorners
             _config = new Configuration();
             _config.ScriptWriter        = config.ScriptWriter       ?? new DefaultScriptWriter();
             _config.ShortCutGenerator   = config.ShortCutGenerator  ?? new DefaultShortCutGenerator();
+            _config.WebService          = config.WebService         ?? new WebService.Service();
             return Instance;
         }
 

@@ -51,6 +51,10 @@
       <Project>{d9b0829c-f776-45ec-8bbb-ab1259a981ad}</Project>
       <Name>ChromeCorners.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ChromeCorners.WebService\ChromeCorners.WebService.csproj">
+      <Project>{9005920d-ea16-4834-a650-efacd08c75c8}</Project>
+      <Name>ChromeCorners.WebService</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\Template.txt">

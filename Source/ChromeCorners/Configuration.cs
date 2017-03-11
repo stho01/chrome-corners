@@ -8,6 +8,7 @@ namespace ChromeCorners
     public class Configuration : IConfiguration
     {
         public IScriptWriter ScriptWriter { get; set; }             
-        public IShortCutGenerator ShortCutGenerator { get; set; }   
+        public IShortCutGenerator ShortCutGenerator { get; set; }
+        public IWebService WebService { get; set; }
     }
 }

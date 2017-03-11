@@ -8,5 +8,6 @@ namespace ChromeCorners.Core
     {
         IScriptWriter ScriptWriter { get; }
         IShortCutGenerator ShortCutGenerator { get; }
+        IWebService WebService { get; }
     }
 }
